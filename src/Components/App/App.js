@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import InputBase from '@mui/material/InputBase';
 import Toolbar from '@mui/material/Toolbar';
-import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -28,16 +27,15 @@ export default function App() {
             <IconButton aria-label="apps">
               <AppsIcon />
             </IconButton>
-            <Button variant="contained" sx={{textTransform: 'none'}}>Sign in</Button>
+            <Button disableElevation variant="contained" sx={{textTransform: 'none'}}>Sign in</Button>
           </Stack>
         </Toolbar>
       </AppBar>
       <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, width: '100%' }}>
         <div style={{ backgroundColor: 'white', display: 'flex', width: '100%', alignItems: 'center', flexDirection: 'column', minHeight: '92px', maxHeight: '290px', height: 'calc(100vh - 560px)', flexShrink: 0, boxSizing: 'border-box'}}>
-          <div style={{height: '100%', marginTop: 'auto', maxHeight: '92px', position: 'relative'}}>
-            <img src="logo.png" style={{objectFit: 'contain', objectPosition: 'center bottom', width: 'auto', maxWidth: '100%', maxHeight: '92px'}} />
-          </div>
+            <img src="logo.png" style={{objectFit: 'contain', objectPosition: 'center bottom', width: 'auto', maxWidth: '100%', maxHeight: '92px', marginTop: 'auto'}} />
         </div>
+
         <div style={{ borderRadius: 0, display: 'flex', backgroundColor: 'white', flexGrow: 0, maxHeight: '160px', padding: '20px', height: '120px'}}>
           <form style={{width: '100%'}}>
             <div>
@@ -45,16 +43,7 @@ export default function App() {
                 <div style={{backgroundColor: '#fff', display: 'flex', height: '44px', border: '1px solid #dfe1e5', boxShadow: 'none', borderRadius: '24px', margin: '0 auto', width: 'auto', maxWidth: '584px'}}>
                   <div style={{display: 'flex', flex: 1, padding: '0 14px 0 14px'}}>
                     <SearchIcon fontSize="small" sx={{color: '#9aa0a6', paddingRight: '5px', marginTop: 'auto', marginBottom: 'auto'}} />
-                    {/* <TextField
-                      hiddenLabel
-                      defaultValue="Small"
-                      variant="outlined"
-                      // size="small"
-                      sx={{border: 0, height: '34px'}}
-                    /> */}
-                    <InputBase
-                      sx={{ ml: 1, flex: 1 }}
-                    />
+                    <InputBase sx={{ ml: 1, flex: 1 }} />
                   </div>
                 </div>
                 <div style={{height: '70px', paddingTop: '10px'}}>
@@ -67,16 +56,24 @@ export default function App() {
             </div>
           </form>
         </div>
-        <div style={{ backgroundColor: 'white', flexGrow: 1, flexShrink: 0, boxSizing: 'border-box'}}>
-        </div>
+        <Box sx={{ backgroundColor: 'white', flexGrow: 1, flexShrink: 0, boxSizing: 'border-box'}}>
+        </Box>
       </Box>
       <AppBar position="static" sx={{background: '#f2f2f2', color: '#70757a'}}>
         <Toolbar variant="dense">
-          <Box sx={{ flexGrow: 1 }} />
+          <Stack direction="row" alignItems="center" spacing={4} sx={{fontSize: '13px', flexGrow: 1, width: 0}}>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>Advertising</Link>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>Business</Link>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>How Search works</Link>
+          </Stack>
           <Typography variant="body2" component="div">
             &#127808; Carbon neutral since 2007
           </Typography>
-          <Box sx={{ flexGrow: 1 }} />
+          <Stack direction="row" alignItems="center" spacing={4} sx={{fontSize: '13px', flexGrow: 1, justifyContent: 'end', width: 0}}>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>Privacy</Link>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>Terms</Link>
+            <Link href="#" underline="none" sx={{color: '#70757a'}}>Settings</Link>
+          </Stack>
         </Toolbar>
       </AppBar>
     </Box>
