@@ -1,16 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom/client";
 import App from './Components/App/App';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
+import Search from "./routes/search";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+const root = ReactDOM.createRoot(
+  document.getElementById("root")
 );
 
-// import * as React from 'react';
-// import Button from '@mui/material/Button';
-
-// function App() {
-//   return <Button variant="contained">Hello World</Button>;
-// }
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="search" element={<Search />} />
+    </Routes>
+  </BrowserRouter>
+);
