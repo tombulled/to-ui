@@ -17,7 +17,7 @@ export default function Search() {
   }
 
   return (
-    <Box sx={{ padding: "10rem 1rem 1rem 10rem", width: '40vw' }}>
+    <Box sx={{ padding: "5rem 1rem 1rem 10rem", width: '40vw' }}>
       <Stack spacing={5}>
         {
           data.map(row => (
