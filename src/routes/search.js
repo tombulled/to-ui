@@ -23,7 +23,7 @@ export default function Search() {
           data.map(row => (
             <Box>
               <Stack direction="row" spacing={1} sx={{paddingBottom: '10px'}}>
-                <img src={row.icon} style={{width: '16px', height: '16px'}} />
+                <img src={`http://127.0.0.1:8080/icons/${row.icon}`} style={{width: '16px', height: '16px'}} />
                 <i>{row.url}</i>
               </Stack>
               <Link href={row.url}>{row.title}</Link>
