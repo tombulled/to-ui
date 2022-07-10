@@ -2,7 +2,6 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import { Link as ReactLink } from "react-router-dom";
 import InputBase from '@mui/material/InputBase';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -11,8 +10,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import AppsIcon from '@mui/icons-material/Apps';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
+  let navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let query = document.getElementById("input-query").value;
+
+    navigate(`/search?q=${query}`);
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100vw', height: '100vh' }}>
       <AppBar position="static" sx={{backgroundColor: 'white'}}>
@@ -25,7 +35,6 @@ export default function App() {
           <Stack direction="row" alignItems="center" spacing={2} sx={{fontSize: '13px'}}>
             <Link href="#" underline="none" sx={{color: '#202124'}}>
               Gmail
-              {/* <ReactLink to="/foo">Gmail</ReactLink> */}
             </Link>
             <Link href="#" underline="none" sx={{color: '#202124'}}>Images</Link>
             <IconButton aria-label="apps">
@@ -41,21 +50,19 @@ export default function App() {
         </div>
 
         <div style={{ borderRadius: 0, display: 'flex', backgroundColor: 'white', flexGrow: 0, maxHeight: '160px', padding: '20px', height: '120px'}}>
-          <form action="/search" method="get" style={{width: '100%'}}>
-            <div>
-              <div style={{margin: '0 auto', paddingTop: '6px', width: 'auto', maxWidth: '584px', position: 'relative'}}>
-                <div style={{backgroundColor: '#fff', display: 'flex', height: '44px', border: '1px solid #dfe1e5', boxShadow: 'none', borderRadius: '24px', margin: '0 auto', width: 'auto', maxWidth: '584px'}}>
-                  <div style={{display: 'flex', flex: 1, padding: '0 14px 0 14px'}}>
-                    <SearchIcon fontSize="small" sx={{color: '#9aa0a6', paddingRight: '5px', marginTop: 'auto', marginBottom: 'auto'}} />
-                    <InputBase sx={{ ml: 1, flex: 1}} name="q" />
-                  </div>
+          <form onSubmit={handleSubmit} style={{width: '100%'}}>
+            <div style={{margin: '0 auto', paddingTop: '6px', width: 'auto', maxWidth: '584px', position: 'relative'}}>
+              <div style={{backgroundColor: '#fff', display: 'flex', height: '44px', border: '1px solid #dfe1e5', boxShadow: 'none', borderRadius: '24px', margin: '0 auto', width: 'auto', maxWidth: '584px'}}>
+                <div style={{display: 'flex', flex: 1, padding: '0 14px 0 14px'}}>
+                  <SearchIcon fontSize="small" sx={{color: '#9aa0a6', paddingRight: '5px', marginTop: 'auto', marginBottom: 'auto'}} />
+                  <InputBase id="input-query" sx={{ ml: 1, flex: 1}} name="q" />
                 </div>
-                <div style={{height: '70px', paddingTop: '10px'}}>
-                  <Stack spacing={2} direction="row" sx={{justifyContent: 'center'}} pt={'18px'}>
-                    <Button size="medium" sx={{textTransform: 'none', color: '#3c4043', backgroundColor: '#f8f9fa'}}>Google Search</Button>
-                    <Button size="medium" sx={{textTransform: 'none', color: '#3c4043', backgroundColor: '#f8f9fa'}}>I'm Feeling Lucky</Button>
-                  </Stack>
-                </div>
+              </div>
+              <div style={{height: '70px', paddingTop: '10px'}}>
+                <Stack spacing={2} direction="row" sx={{justifyContent: 'center'}} pt={'18px'}>
+                  <Button size="medium" sx={{textTransform: 'none', color: '#3c4043', backgroundColor: '#f8f9fa'}}>Google Search</Button>
+                  <Button size="medium" sx={{textTransform: 'none', color: '#3c4043', backgroundColor: '#f8f9fa'}}>I'm Feeling Lucky</Button>
+                </Stack>
               </div>
             </div>
           </form>

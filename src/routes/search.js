@@ -25,6 +25,16 @@ export default function Search() {
       .then((data) => setData(data));
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let query = document.getElementById("input-query").value;
+
+    fetch(`http://127.0.0.1:8080/search?q=${query}`)
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', width: '100vw', height: '100vh' }}>
       <AppBar position="static" sx={{backgroundColor: 'white', boxShadow: "none"}}>
@@ -33,11 +43,11 @@ export default function Search() {
             <Link component={ReactLink} to="/" underline="none" sx={{color: '#202124'}}>
               <img src="logo.png" style={{height: "28px", width: "86px"}} />
             </Link>
-            <form action="/search" method="get">
+            <form onSubmit={handleSubmit} style={{width: '100%'}}>
               <div style={{backgroundColor: '#fff', display: 'flex', height: '32px', border: '1px solid #dfe1e5', boxShadow: 'none', borderRadius: '24px', margin: '0 auto 0 60px', width: 'auto', width: '690px'}}>
                 <div style={{display: 'flex', flex: 1, padding: '0 14px 0 14px'}}>
                   <SearchIcon fontSize="small" sx={{color: '#9aa0a6', paddingRight: '5px', marginTop: 'auto', marginBottom: 'auto'}} />
-                  <InputBase defaultValue={query} sx={{ ml: 1, flex: 1}} name="q" />
+                  <InputBase id="input-query" defaultValue={query} sx={{ ml: 1, flex: 1}} name="q" />
                 </div>
               </div>
             </form>
