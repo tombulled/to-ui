@@ -20,7 +20,7 @@ export default function Search() {
   const query = new URLSearchParams(search).get('q');
 
   if (data.length == 0) {
-    fetch(`http://127.0.0.1:8080/search?q=${query}`)
+    fetch(`/api/search?q=${query}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }
@@ -30,7 +30,7 @@ export default function Search() {
 
     let query = document.getElementById("input-query").value;
 
-    fetch(`http://127.0.0.1:8080/search?q=${query}`)
+    fetch(`/api/search?q=${query}`)
       .then((res) => res.json())
       .then((data) => setData(data));
   };
@@ -71,7 +71,7 @@ export default function Search() {
               <Box>
                 <a href={row.url} style={{outline: 0, textDecoration: "none"}}>
                   <Stack direction="row" spacing={1} sx={{paddingBottom: '10px'}}>
-                    <img src={`http://127.0.0.1:8080/icons/${row.icon}`} style={{width: '16px', height: '16px'}} />
+                    <img src={`/api/icons/${row.icon}`} style={{width: '16px', height: '16px'}} />
                     <span style={{fontSize: "14px", color: "#202124"}}>{row.url}</span>
                   </Stack>
                   <h3 style={{color: "#1a0dab", fontSize: "20px", lineHeight: "1.3", fontWeight: "400", margin: 0}}>{row.title}</h3>
