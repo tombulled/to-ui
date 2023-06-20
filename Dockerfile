@@ -6,8 +6,8 @@ COPY package.json package.json
 COPY src src
 COPY public public
 
-RUN npm install -g http-server
+RUN npm install serve --location=global
 RUN npm install
 RUN npm run build
 
-ENTRYPOINT ["http-server", "build", "-p", "8080"]
+ENTRYPOINT ["serve", "-s", "build", "-p", "8080"]
